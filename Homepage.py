@@ -17,7 +17,7 @@ css = """
         /* Center align the app title */
         .title {
             text-align: center;
-            color: white;
+            color: black;
             margin-bottom: 20px;
         }
         /* Styling for the container */
@@ -29,7 +29,7 @@ css = """
         }
         /* Styling for the department info */
         .info {
-            color: white;
+            color: black;
             text-align: center;
             margin-bottom: 10px;
         }
@@ -53,13 +53,20 @@ st.markdown(css, unsafe_allow_html=True)
 
 
 st.markdown("<h1 class='title'>Medical Image Security App</h1>", unsafe_allow_html=True)
+
+footer_html = """
+    <div style="background-color:#82CEC4;padding:20px;border-radius:10px;color:black; text-align:center;">
+        <p> <b>Guide</b>: Dr. Jaidhar C.D.</p>
+        <p> <b>Developers:</b> Sachin Prasanna, Rounak Jain, Abhayjit Singh Gulati</p>
+       
+    </div>
+"""
+st.markdown(footer_html, unsafe_allow_html=True)
+
 st.write("---")
 st.markdown("<div class='info'>National Institute of Technology Karnataka</div>", unsafe_allow_html=True)
 st.markdown("<div class='info'>Department of Information Technology</div>", unsafe_allow_html=True)
 st.markdown("<div class='info'>Information Assurance and Security</div>", unsafe_allow_html=True)
-
-# st.markdown("<div class='info'>National Institute of Technology, Karnataka</div>", unsafe_allow_html=True)
-
 
 # Image logo
 col1, col2, col3 = st.columns([1.5, 1, 1])
@@ -159,16 +166,9 @@ st.markdown("---")
 
 
 footer_html = """
-    <div style="background-color:#0c0814;padding:20px;border-radius:10px;color:white;">
-        <h3>Developed By:</h3>
-        <p>Sachin Prasanna</p>
-        <p>Rounak Jain</p>
-        <p>Abhayjit Singh Gulati</p>
-        <h3>Under the guidance of:</h3>
-        <p>Dr. Jaidhar C.D.</p>
-        <h4> Paper Implemented:</h4>
+    <div style="background-color:#82CEC4;padding:20px;border-radius:10px;color:black;">
+        <h6 style="color:black;"> Paper Implemented:</h4>
         <p>Singh, Om Prakash, et al. "SecDH: Security of COVID-19 images based on data hiding with PCA." Computer Communications 191 (2022): 368-377.</p>
     </div>
 """
-
 st.markdown(footer_html, unsafe_allow_html=True)
