@@ -569,6 +569,13 @@ path2 = 'assets/watermark_image.png'
 
 enc_mark_img = algorithm_2(path1, path2)
 
+enc_mark_img_2 = enc_mark_img
+
+# resize enc_mark_img to 512x512
+enc_mark_img_2 = cv2.resize(enc_mark_img_2, (512, 512))
+
+cv2.imwrite('generated_assets/final_encrypted_image.png', enc_mark_img_2)
+
 plt.figure(figsize=(10, 5))
 plt.subplot(1, 2, 1)
 plt.imshow(img, cmap='gray')
@@ -580,7 +587,7 @@ plt.imshow(enc_mark_img, cmap='gray')
 plt.title('Encrypted Image using Algorithm 2')
 plt.axis('off')
 
-plt.savefig('generated_assets/final_encrypted_image.png')
+# plt.savefig('generated_assets/final_encrypted_image.png')
 # plt.show()
 
 # # Algorithm 3: Watermarking Extraction

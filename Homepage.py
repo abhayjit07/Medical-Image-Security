@@ -11,73 +11,76 @@ st.set_page_config(
     page_icon=":hospital:",
     layout="wide",  
 )
-
 css = """
-    <style>
-        /* Center align the app title */
-        .title {
-            text-align: center;
-            color: black;
-            margin-bottom: 20px;
-        }
-        /* Styling for the container */
-        .container {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        /* Styling for the department info */
-        .info {
-            color: black;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        /* Logo styling */
-        .logo {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .footer p {
-                margin: 5px 0;
-            }
-            .footer p:hover {
-                color: #ddd; /* Change text color on hover */
-            }
-    </style>
+<style>
+    /* Center align the app title */
+    .title {
+        text-align: center;
+        color: black;
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+    /* Styling for the department info */
+    .info {
+    color: black;
+    text-align: center;
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15%; /* Add margin to create spacing */
+    font-size: 24px;
+    # font-family: 'Times New Roman', Times, serif; /* Set font style to Times New Roman */
+}
+    /* Logo and text container */
+    .logo-container {
+        text-align: left;
+    }
+    .logo-container img {
+        vertical-align: middle;
+    }
+    /* Footer styling */
+    .footer p {
+        margin: 5px 0;
+    }
+    .footer p:hover {
+        color: #ddd; /* Change text color on hover */
+    }
+</style>
 """
 
 # Render CSS
 st.markdown(css, unsafe_allow_html=True)
 
+# Logo and markdown text in the same span
+st.markdown("""
+<div class="logo-container">
+    <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/NITK_Emblem.png" width="100" class="logo" />
+    <div class="info">
+        <div>National Institute of Technology Karnataka</div>
+        <div>Department of Information Technology</div>
+        <div>Information Assurance and Security</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
+st.write("---")
 st.markdown("<h1 class='title'>Medical Image Security App</h1>", unsafe_allow_html=True)
 
 footer_html = """
     <div style="background-color:#82CEC4;padding:20px;border-radius:10px;color:black; text-align:center;">
-        <p> <b>Guide</b>: Dr. Jaidhar C.D.</p>
-        <p> <b>Developers:</b> Sachin Prasanna, Rounak Jain, Abhayjit Singh Gulati</p>
-       
+        <p style="font-size:25px;"> <b>Guide</b>: Dr. Jaidhar C.D.</p>
+        <p style="font-size:23px;"> <b>Implemented by:</b> Sachin Prasanna (211IT058), Rounak Jain (211IT055), Abhayjit Singh Gulati (211IT085)</p>
     </div>
 """
 st.markdown(footer_html, unsafe_allow_html=True)
 
-st.write("---")
-st.markdown("<div class='info'>National Institute of Technology Karnataka</div>", unsafe_allow_html=True)
-st.markdown("<div class='info'>Department of Information Technology</div>", unsafe_allow_html=True)
-st.markdown("<div class='info'>Information Assurance and Security</div>", unsafe_allow_html=True)
-
-# Image logo
-col1, col2, col3 = st.columns([1.5, 1, 1])
-with col2:
-    st.image("nitk_logo.png", width=100)
 
 
 st.write("---")
 
+st.subheader("Upload Image")
 # Upload image
-image = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
+image = st.file_uploader("", type=["png"])
 
 st.write("---")
 
@@ -102,8 +105,9 @@ else:
 
 st.write("---")
 
+st.subheader("Upload Watermark Image")
 # Upload image
-watermark_image = st.file_uploader("Upload Watermark Image", type=["jpg", "jpeg", "png"])
+watermark_image = st.file_uploader("Watermark", type=["png"])
 
 st.write("---")
 
@@ -141,14 +145,21 @@ else:
     
     if os.path.exists("generated_assets/final_encrypted_image.png"):
         st.subheader("Encrypted Image")
-        st.image("generated_assets/final_encrypted_image.png", use_column_width=True)
+        col1, col2, col3 = st.columns(3)
+        with col1:
+           st.write(' ')
+        with col2:         
+          st.image("generated_assets/final_encrypted_image.png", use_column_width=True)
+        with col3:
+          st.write(' ')
         
-        st.write("---")
-        st.subheader("Final Results")
-        if os.path.exists("generated_assets/final_result.png"):
-            st.image("generated_assets/final_result.png", use_column_width=True)
-        else:
-            st.warning("The final result image is not available.")
+        
+        # st.write("---")
+        # st.subheader("Final Results")
+        # if os.path.exists("generated_assets/final_result.png"):
+        #     st.image("generated_assets/final_result.png", use_column_width=True)
+        # else:
+        #     st.warning("The final result image is not available.")
         
         st.write("---")
         st.subheader("Decryption")

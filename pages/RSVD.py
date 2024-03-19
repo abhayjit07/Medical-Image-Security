@@ -17,7 +17,7 @@ st.markdown("### RSVD")
 
 st.write("---")
 
-image = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
+image = st.file_uploader("Upload Image", type=["png"])
 
 st.write("---")
 
